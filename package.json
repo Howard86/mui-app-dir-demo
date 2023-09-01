@@ -1,13 +1,13 @@
 {
-  "name": "nextjs-template",
+  "name": "mui-app-dir-demo",
   "version": "1.4.0",
   "engines": {
     "node": ">=18"
   },
-  "description": "Opinionated Next.js template configured with TypeScript, DaisyUI, Heroicons and other devtools",
+  "description": "@mui with next.js App Router Demo",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Howard86/nextjs-template"
+    "url": "https://github.com/Howard86/mui-app-dir-demo"
   },
   "author": "Howard Tai <howard@howardism.dev>",
   "license": "MIT",
@@ -23,9 +23,9 @@
     "commitlint"
   ],
   "bugs": {
-    "url": "https://github.com/Howard86/nextjs-template/issues"
+    "url": "https://github.com/Howard86/mui-app-dir-demo/issues"
   },
-  "homepage": "https://github.com/Howard86/nextjs-template",
+  "homepage": "https://github.com/Howard86/mui-app-dir-demo",
   "scripts": {
     "analyze": "ANALYZE=true next build",
     "clean": "rm -rf .next node_modules coverage tsconfig.tsbuildinfo",
@@ -82,5 +82,6 @@
   },
   "msw": {
     "workerDirectory": "public"
-  }
+  },
+  "packageManager": "pnpm@8.7.0"
 }
