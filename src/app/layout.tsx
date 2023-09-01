@@ -1,9 +1,10 @@
 import {
   Dashboard,
   Home,
+  ListOutlined,
   Logout,
+  OutboxOutlined,
   Settings,
-  Star,
   Support,
 } from '@mui/icons-material'
 import {
@@ -36,17 +37,59 @@ export const metadata: Metadata = {
 
 const DRAWER_WIDTH = 240
 
-const LINKS = [
-  { text: 'Home', href: '/', icon: Home },
-  { text: 'Starred', href: '/starred', icon: Star },
-  { text: 'Dashboard', href: '/dashboard', icon: Dashboard },
-]
-
 const PLACEHOLDER_LINKS = [
   { text: 'Settings', icon: Settings },
   { text: 'Support', icon: Support },
   { text: 'Logout', icon: Logout },
 ]
+
+const LINKS = [
+  { text: 'Home', href: '/', icon: Home },
+  {
+    text: 'Modal Demo',
+    children: [{ text: 'List', href: '/modals/list', icon: ListOutlined }],
+    icon: OutboxOutlined,
+  },
+]
+
+type ListLinkItemProps = { level?: number } & (typeof LINKS)[number]
+
+function ListLinkItem({
+  text,
+  href,
+  icon: Icon,
+  children,
+  level = 0,
+}: ListLinkItemProps) {
+  if (href) {
+    return (
+      <ListItem disablePadding>
+        <ListItemButton component={Link} href={href}>
+          <ListItemIcon>
+            <Icon />
+          </ListItemIcon>
+          <ListItemText primary={text} sx={{ flexBasis: '100%' }} />
+        </ListItemButton>
+      </ListItem>
+    )
+  }
+
+  if (!children) return null
+
+  return (
+    <ListItem sx={{ flexWrap: 'wrap' }}>
+      <ListItemIcon>
+        <Icon />
+      </ListItemIcon>
+      <ListItemText primary={text} />
+      <List sx={{ width: '100%' }}>
+        {children.map((item) => (
+          <ListLinkItem key={level + item.text} level={level + 1} {...item} />
+        ))}
+      </List>
+    </ListItem>
+  )
+}
 
 export default function RootLayout({ children }: ChildrenProps) {
   return (
@@ -78,15 +121,8 @@ export default function RootLayout({ children }: ChildrenProps) {
           >
             <Divider />
             <List>
-              {LINKS.map(({ text, href, icon: Icon }) => (
-                <ListItem key={href} disablePadding>
-                  <ListItemButton component={Link} href={href}>
-                    <ListItemIcon>
-                      <Icon />
-                    </ListItemIcon>
-                    <ListItemText primary={text} />
-                  </ListItemButton>
-                </ListItem>
+              {LINKS.map((item) => (
+                <ListLinkItem key={item.text} {...item} />
               ))}
             </List>
             <Divider sx={{ mt: 'auto' }} />

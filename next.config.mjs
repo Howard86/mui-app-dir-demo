@@ -14,6 +14,9 @@ const config = {
       preventFullImport: true,
     },
   },
+  images: {
+    domains: ['images.unsplash.com'],
+  },
 }
 
 const withBundleAnalyzer = createBundleAnalyzerPlugin({
