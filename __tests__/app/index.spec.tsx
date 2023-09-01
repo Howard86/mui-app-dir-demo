@@ -1,15 +1,15 @@
 import { render, screen } from '@testing-library/react'
 import React from 'react'
 
-import Home from '../../src/app/page'
+import HomePage from '@/app/page'
 
 describe('home', () => {
   it('renders a heading', () => {
     expect.hasAssertions()
-    render(<Home />)
+    render(<HomePage />)
 
     const heading = screen.getByRole('heading', {
-      name: /welcome to next\.js!/i,
+      name: /hello world!/i,
     })
 
     expect(heading).toBeInTheDocument()
