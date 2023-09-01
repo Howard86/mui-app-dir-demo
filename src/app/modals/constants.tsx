@@ -46,18 +46,22 @@ export type Normalize<T extends object, K extends keyof T> = {
   entities: NodeJS.Dict<T>
 }
 
-export const normalize = <T extends { id: number }>(
+export const normalize = <T extends object, K extends keyof T>(
   arr: T[],
-  key: keyof T
-): Normalize<T, 'id'> => {
-  const result: Normalize<T, 'id'> = {
+  key: K
+): Normalize<T, K> => {
+  const result: Normalize<T, K> = {
     ids: [],
     entities: {},
   }
 
   for (const item of arr) {
-    result.ids.push(item[key])
-    result.entities[item[key]] = item
+    const id = item[key]
+
+    if (typeof id === 'string' || typeof id === 'number') {
+      result.ids.push(id)
+      result.entities[id] = item
+    }
   }
 
   return result

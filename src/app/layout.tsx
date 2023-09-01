@@ -1,4 +1,5 @@
 import {
+  ArchiveOutlined,
   Dashboard,
   Home,
   ListOutlined,
@@ -47,7 +48,14 @@ const LINKS = [
   { text: 'Home', href: '/', icon: Home },
   {
     text: 'Modal Demo',
-    children: [{ text: 'List', href: '/modals/list', icon: ListOutlined }],
+    children: [
+      { text: 'List', href: '/modals/list', icon: ListOutlined },
+      {
+        text: 'Container',
+        href: '/modals/container',
+        icon: ArchiveOutlined,
+      },
+    ],
     icon: OutboxOutlined,
   },
 ]

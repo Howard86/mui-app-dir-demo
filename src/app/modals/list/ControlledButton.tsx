@@ -15,7 +15,7 @@ export default function ControlledButton({ id, ...props }: Product) {
   return (
     <>
       <ProductListButtonItem id={id} onClick={handleClick} {...props} />
-      <ProductDialog id={id} open={open} onClose={handleClick} {...props} />
+      <ProductDialog id={id} open={open} onClose={handleClick} />
     </>
   )
 }
