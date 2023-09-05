@@ -60,7 +60,7 @@ export const normalize = <T extends object, K extends keyof T>(
 
     if (id) {
       result.ids.push(id)
-      result.entities[id] = item
+      result.entities[id as string] = item
     }
   }
 
