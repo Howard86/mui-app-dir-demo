@@ -1,4 +1,5 @@
 import {
+  AltRouteOutlined,
   ArchiveOutlined,
   Dashboard,
   Home,
@@ -61,6 +62,11 @@ const LINKS = [
         href: '/modals/container-context',
         icon: MoveToInboxOutlined,
       },
+      {
+        text: 'Intercepting Routes',
+        href: '/modals/intercepting-routes',
+        icon: AltRouteOutlined,
+      },
     ],
     icon: OutboxOutlined,
   },
@@ -110,7 +116,7 @@ export default function RootLayout({ children }: ChildrenProps) {
     <html lang="en">
       <body>
         <ThemeRegistry>
-          <AppBar position="fixed" sx={{ zIndex: 2000 }}>
+          <AppBar position="fixed" sx={{ zIndex: 1300 }}>
             <Toolbar sx={{ bgcolor: 'background.paper' }}>
               <Dashboard />
               <Typography variant="h6" noWrap component="div" color="black">

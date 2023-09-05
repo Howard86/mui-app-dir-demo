@@ -11,7 +11,9 @@ import { Product } from '@/app/modals/constants'
 
 export interface ProductListButtonItemProps
   extends Product,
-    Omit<ListItemButtonProps, 'id'> {}
+    Omit<ListItemButtonProps, 'id'> {
+  href?: string // this bypasses ts errors when using `component={Link}` in the parent
+}
 
 export default function ProductListButtonItem({
   image,
