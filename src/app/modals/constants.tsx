@@ -58,7 +58,7 @@ export const normalize = <T extends object, K extends keyof T>(
   for (const item of arr) {
     const id = item[key]
 
-    if (typeof id === 'string' || typeof id === 'number') {
+    if (id) {
       result.ids.push(id)
       result.entities[id] = item
     }
